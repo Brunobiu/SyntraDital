@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synkra Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="tooplate-parallax-depth.css" rel="stylesheet">
+<!--
+
+Tooplate 2144 Parallax Depth
+
+https://www.tooplate.com/view/2144-parallax-depth
+
+Free HTML CSS Template
+
+-->
+</head>
+<body>
+    <!-- Mouse Follower -->
+    <div class="mouse-follower" id="mouseFollower"></div>
+
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Hero Section with Parallax Layers -->
+    <div class="hero-container" id="hero">
+        <!-- Grid Overlay -->
+        <div class="grid-overlay">
+            <div class="grid-diagonal-1"></div>
+            <div class="grid-diagonal-2"></div>
+        </div>
+
+        <!-- Logo -->
+        <div class="logo-container">
+            <a href="#hero" class="logo">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer hexagon -->
+                    <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" 
+                             fill="none" 
+                             stroke="url(#logo-gradient)" 
+                             stroke-width="2"/>
+                    <!-- Inner triangles creating depth -->
+                    <polygon points="50,20 70,35 50,50" 
+                             fill="url(#logo-gradient)" 
+                             opacity="0.8"/>
+                    <polygon points="50,50 70,35 70,65" 
+                             fill="url(#logo-gradient2)" 
+                             opacity="0.6"/>
+                    <polygon points="50,50 70,65 50,80" 
+                             fill="url(#logo-gradient)" 
+                             opacity="0.7"/>
+                    <polygon points="50,20 30,35 50,50" 
+                             fill="url(#logo-gradient2)" 
+                             opacity="0.7"/>
+                    <polygon points="50,50 30,35 30,65" 
+                             fill="url(#logo-gradient)" 
+                             opacity="0.5"/>
+                    <polygon points="50,50 30,65 50,80" 
+                             fill="url(#logo-gradient2)" 
+                             opacity="0.8"/>
+                    <!-- Center gem -->
+                    <polygon points="50,40 60,50 50,60 40,50" 
+                             fill="url(#logo-gradient3)" 
+                             stroke="#00ffcc" 
+                             stroke-width="1"/>
+                    <!-- Gradient definitions -->
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ff00ea;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="logo-gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff00ea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00ffcc;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="logo-gradient3" x1="50%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00ffcc;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00d9ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text"></span>
+            </a>
+        </div>
+
+        <!-- Background Layer -->
+        <div class="parallax-layer layer-bg"></div>
+        
+        <!-- Floating Elements Layer -->
+        <div class="parallax-layer layer-float">
+            <!-- Bottom Left Rectangle Group -->
+            <div class="rectangles-bottom-left">
+                <div class="rect rect-bl-1"></div>
+                <div class="rect rect-bl-2"></div>
+                <div class="rect rect-bl-3"></div>
+                <div class="rect rect-bl-4"></div>
+                <div class="rect rect-bl-5"></div>
+                <div class="rect rect-bl-6"></div>
+            </div>
+            
+            <!-- Top Right Rectangle Group -->
+            <div class="rectangles-top-right">
+                <div class="rect rect-tr-1"></div>
+                <div class="rect rect-tr-2"></div>
+                <div class="rect rect-tr-3"></div>
+                <div class="rect rect-tr-4"></div>
+            </div>
+        </div>
+        
+        <!-- Foreground Layer -->
+        <div class="parallax-layer layer-fg">
+            <div class="glowing-orb orb-1"></div>
+            <div class="glowing-orb orb-2"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <!-- HERO -->
+        <div class="hero-content">
+            <h1 class="hero-title">Synkra Digital</h1>
+            <p class="hero-subtitle">Investir em Marketing é investir em Vendas</p>
+            <!-- Botão que abre o modal -->
+            <a href="#" class="cta-button" id="open-orcamento-modal">
+                SOLICITAR ORÇAMENTO
+            </a>
+        </div>
+
+        <!-- MODAL DE ORÇAMENTO -->
+        <div class="orcamento-modal" id="orcamento-modal">
+            <div class="orcamento-modal-overlay"></div>
+
+            <div class="orcamento-modal-box">
+                <button class="orcamento-close" id="close-orcamento-modal">&times;</button>
+
+                <h2 class="orcamento-title">
+                    Preencha o formulário abaixo que iremos entrar em contato com você!
+                </h2>
+
+                <form id="orcamento-form">
+                    <div class="orcamento-row">
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            class="orcamento-input"
+                            placeholder="Nome"
+                            required
+                        />
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="orcamento-input"
+                            placeholder="Email"
+                            required
+                        />
+                    </div>
+
+                    <div class="orcamento-row">
+                        <select
+                            id="servico"
+                            name="servico"
+                            class="orcamento-input"
+                            required
+                        >
+                            <option value="" disabled selected>Qual serviço você precisa?</option>
+                            <option>Social Media</option>
+                            <option>Tráfego Pago</option>
+                            <option>Site Institucional</option>
+                            <option>E-commerce</option>
+                            <option>Curso / Mentoria</option>
+                            <option>Treinamento / Workshop InCompany</option>
+                            <option>Estratégia de Redes Sociais [Posicionamento de Marca]</option>
+                            <option>Mais de um Serviço</option>
+                            <option>Outros Serviços não listado</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="orcamento-submit">
+                        SOLICITAR ORÇAMENTO
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <a href="#about" class="nav-btn-next" title="Next Section">
+            <div class="pyramid">
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-base"></div>
+                <span class="pyramid-inner">▼</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- About Section -->
+    <section class="content-section section-gradient" id="about">
+        <div class="container">
+            <h2 class="section-title">Marketing Digital com Precisão</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Para comércios locais e globais</h3>
+                    <p>Olá! Somos a SINKRA DIGITAL, a sua parceira de marketing digital com foco 100% no sucesso de comércios por região 🗺️</p>
+                    <p><strong>Nossa Missão:</strong> Transformar sua presença digital em vendas reais.</p>
+                    <p><strong>O que fazemos:</strong> Criamos e executamos estratégias digitais, para encher sua loja de clientes e garantir que sua marca seja a primeira opção local.</p>
+                    <p><strong>Diferencial:</strong> Possuímos um sistema de automação que atende seus clientes no WhatsApp 24h, para que você nunca mais perca uma venda. 🤖💬</p>
+                    <div class="about-boxes">
+    <div class="info-box">
+        <div class="box-icon">
+            📍
+            <span class="box-number">1</span>
+        </div>
+        <h4 class="box-title">Empresa no Google</h4>
+        <p class="box-description">Garante que a empresa apareça em primeiro lugar no Google Maps e nas pesquisas locais quando clientes buscam o serviço ou produto.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="box-icon">
+            📢
+            <span class="box-number">2</span>
+        </div>
+        <h4 class="box-title">Estratégica de Conteúdo</h4>
+        <p class="box-description">Cria e publica conteúdo nas redes sociais focado em engajar a comunidade local e direcionar o tráfego para a loja física ou virtual.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="box-icon">
+            💸
+            <span class="box-number">3</span>
+        </div>
+        <h4 class="box-title">Anúncios por Região</h4>
+        <p class="box-description">Cria campanhas de anúncios digitais (Meta Ads, Google Ads) que aparecem apenas para pessoas em um raio específico do município.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="box-icon">
+            🤖
+            <span class="box-number">4</span>
+        </div>
+        <h4 class="box-title">Automação</h4>
+        <p class="box-description">Configura mensagens automáticas, catálogo de produtos e funis de venda simples para atender e converter clientes 24h por dia.</p>
+    </div>
+</div>
+
+                </div>
+                <div class="about-visual">
+                    <div class="orbit-container">
+                        <div class="orbit orbit-1">
+                            <div class="orbit-dot dot-1"></div>
+                        </div>
+                        <div class="orbit orbit-2">
+                            <div class="orbit-dot dot-2"></div>
+                        </div>
+                        <div class="orbit orbit-3">
+                            <div class="orbit-dot dot-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <a href="#hero" class="nav-btn-prev" title="Previous Section">
+            <div class="hexagon">
+                <span class="hex-content">▲</span>
+            </div>
+        </a>
+        <a href="#features" class="nav-btn-next" title="Next Section">
+            <div class="pyramid">
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-base"></div>
+                <span class="pyramid-inner">▼</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- Features Section with 3D Carousel -->
+    <section class="content-section features-section-bg" id="features">
+        <!-- Grid Overlay -->
+        <div class="features-grid-overlay">
+            <div class="features-grid"></div>
+            <div class="features-grid-large"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Passo a passo</h2>
+            <div class="features-container">
+                <div class="carousel-3d" id="carousel">
+                    <div class="feature-card-3d" data-index="0">
+                        <span class="feature-number">01</span>
+                        <div class="feature-icon-3d">🧭</div>
+                        <h3 class="feature-title-3d">Estratégia Personalizada</h3>
+                        <p class="feature-description-3d">Vamos elaborar o plano de ataque ideal para as metas da sua empresa.</p>
+                    </div>
+                    <div class="feature-card-3d" data-index="1">
+                        <span class="feature-number">02</span>
+                        <div class="feature-icon-3d">🎬</div>
+                        <h3 class="feature-title-3d">Criação de Conteúdo</h3>
+                        <p class="feature-description-3d">Edição de fotos e vídeos de alto nível para gerar impacto e credibilidade visual.</p>
+                    </div>
+                    <div class="feature-card-3d" data-index="2">
+                        <span class="feature-number">03</span>
+                        <div class="feature-icon-3d">📣</div>
+                        <h3 class="feature-title-3d">Social Media Forte</h3>
+                        <p class="feature-description-3d">Gerenciamos sua presença nas redes sociais para construir autoridade e engajamento.</p>
+                    </div>
+                    <div class="feature-card-3d" data-index="3">
+                        <span class="feature-number">04</span>
+                        <div class="feature-icon-3d">🛒</div>
+                        <h3 class="feature-title-3d">Site Otimizado (E-commerce)</h3>
+                        <p class="feature-description-3d">Deixamos seu site/e-commerce 100% organizado, com estoque e produtos em perfeita sincronia.</p>
+                    </div>
+                    <div class="feature-card-3d" data-index="4">
+                        <span class="feature-number">05</span>
+                        <div class="feature-icon-3d">🚀</div>
+                        <h3 class="feature-title-3d">Tráfego de Resultados (Ads)</h3>
+                        <p class="feature-description-3d">Execução e otimização de campanhas no Meta e Google para máximo Retorno Sobre Investimento (ROI).</p>
+                    </div>
+                    <div class="feature-card-3d" data-index="5">
+                        <span class="feature-number">06</span>
+                        <div class="feature-icon-3d">🤖</div>
+                        <h3 class="feature-title-3d">Inovação com IA</h3>
+                        <p class="feature-description-3d">Integramos Inteligência Artificial nos processos para dar velocidade e vantagem competitiva à sua marca.</p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-btn" id="prevBtn">◀</div>
+                    <div class="carousel-btn" id="nextBtn">▶</div>
+                </div>
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <a href="#about" class="nav-btn-prev" title="Previous Section">
+            <div class="hexagon">
+                <span class="hex-content">▲</span>
+            </div>
+        </a>
+        <a href="#gallery" class="nav-btn-next" title="Next Section">
+            <div class="pyramid">
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-face"></div>
+                <div class="pyramid-base"></div>
+                <span class="pyramid-inner">▼</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section section-gradient" id="gallery">
+    <div class="container">
+        <h2 class="section-title">Empresas que tralhamos</h2>
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+    <img src="images/1.png" alt="Google" class="gallery-image">
+    <div class="gallery-overlay">
+        <h3 class="gallery-title">Google</h3>
+        <p class="gallery-subtitle">Campanhas inteligentes e tráfego qualificado</p>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="images/2.png" alt="Meta Ads" class="gallery-image">
+    <div class="gallery-overlay">
+        <h3 class="gallery-title">Meta Ads</h3>
+        <p class="gallery-subtitle">Alcance máximo com anúncios otimizados</p>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="images/3.png" alt="Instagram" class="gallery-image">
+    <div class="gallery-overlay">
+        <h3 class="gallery-title">Instagram</h3>
+        <p class="gallery-subtitle">Conteúdo visual que converte em vendas</p>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="images/4.png" alt="TikTok Ads" class="gallery-image">
+    <div class="gallery-overlay">
+        <h3 class="gallery-title">TikTok</h3>
+        <p class="gallery-subtitle">Vídeos virais com alto potencial de alcance</p>
+    </div>
+</div>
+
+            
+
+        </div>
+    </div>
+
+    <a href="#features" class="nav-btn-prev" title="Previous Section">
+        <div class="hexagon">
+            <span class="hex-content">▲</span>
+        </div>
+    </a>
+</section>
+
+
+    <!-- Contact Section -->
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#hero" class="footer-link">Início</a>
+                <a href="#about" class="footer-link">Sobre nós</a>
+                <a href="#features" class="footer-link">Passo a Passo</a>
+                <a href="#gallery" class="footer-link">Parceiras</a>
+            </div>
+
+            <a href="#hero" class="cta-button">Solicitar Orçamento</a>
+            
+
+            <div class="footer-divider"></div>
+            <div class="footer-copyright">
+                <p>© 2026 Syntra Digital. Todos os direitos reservados.</p>
+                <p>Design: <a href="https://www.tooplate.com" target="_blank" rel="nofollow noopener">Tooplate</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="tooplate-2144-parallax-scripts.js"></script>
+
+<script>
+
+// número do WhatsApp com DDI (55) + DDD (62) + número
+const WHATSAPP_NUMBER = "5562994757240";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("orcamento-modal");
+    const openBtn = document.getElementById("open-orcamento-modal");
+    const closeBtn = document.getElementById("close-orcamento-modal");
+    const overlay = document.querySelector(".orcamento-modal-overlay");
+    const form = document.getElementById("orcamento-form");
+
+    // abrir modal
+    openBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.classList.add("show");
+    });
+
+    // fechar modal
+    function closeModal() {
+        modal.classList.remove("show");
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", closeModal);
+
+    // enviar para WhatsApp
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const servico = document.getElementById("servico").value;
+
+        if (!nome || !email || !servico) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        const mensagem =
+            `Olá, meu nome é ${nome}.\n` +
+            `Email: ${email}\n` +
+            `Serviço desejado: ${servico}\n\n` +
+            `Gostaria de fazer um orçamento.`;
+
+        const url =
+            `https://wa.me/${62994757240}?text=` +
+            encodeURIComponent(mensagem);
+
+        // abre o WhatsApp com a mensagem pronta, só para o cliente enviar
+        window.open(url, "_blank");
+
+        // se quiser já fechar o modal depois:
+        closeModal();
+        form.reset();
+    });
+});
+
+
+
+</script>
+</body>
+</html>

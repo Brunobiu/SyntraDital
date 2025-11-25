@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synkra Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .state-selection-container {
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 100; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7); 
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.5); 
+            max-width: 300px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .state-selection-container h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffcc;
+            margin-bottom: 20px;
+        }
+
+        .state-selection-container select,
+        .state-selection-container button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .state-selection-container select {
+            background-color: #1a1a1a;
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+            appearance: none; 
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .state-selection-container button {
+            background-color: #ff00ea;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .state-selection-container button:hover {
+            background-color: #d800c6;
+        }
+
+        /* NOVO ESTILO PARA A MENSAGEM DE ERRO */
+        #error-message {
+            color: #ff3333; /* Vermelho forte para erro */
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            min-height: 20px; /* Para evitar que os elementos "pulem" */
+            margin-top: -10px; /* Ajusta a posição para ficar logo abaixo do botão */
+        }
+    </style>
+    
+    <link href="tooplate-parallax-depth.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="mouse-follower" id="mouseFollower"></div>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="hero-container" id="hero">
+        <div class="grid-overlay">
+            <div class="grid-diagonal-1"></div>
+            <div class="grid-diagonal-2"></div>
+        </div>
+
+        <div class="logo-container">
+            <a href="#hero" class="logo">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" 
+                                fill="none" 
+                                stroke="url(#logo-gradient)" 
+                                stroke-width="2"/>
+                    <polygon points="50,20 70,35 50,50" 
+                                fill="url(#logo-gradient)" 
+                                opacity="0.8"/>
+                    <polygon points="50,50 70,35 70,65" 
+                                fill="url(#logo-gradient2)" 
+                                opacity="0.6"/>
+                    <polygon points="50,50 70,65 50,80" 
+                                fill="url(#logo-gradient)" 
+                                opacity="0.7"/>
+                    <polygon points="50,20 30,35 50,50" 
+                                fill="url(#logo-gradient2)" 
+                                opacity="0.7"/>
+                    <polygon points="50,50 30,35 30,65" 
+                                fill="url(#logo-gradient)" 
+                                opacity="0.5"/>
+                    <polygon points="50,50 30,65 50,80" 
+                                fill="url(#logo-gradient2)" 
+                                opacity="0.8"/>
+                    <polygon points="50,40 60,50 50,60 40,50" 
+                                fill="url(#logo-gradient3)" 
+                                stroke="#00ffcc" 
+                                stroke-width="1"/>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ff00ea;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="logo-gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff00ea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00ffcc;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="logo-gradient3" x1="50%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00ffcc;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00d9ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text"></span>
+            </a>
+        </div>
+
+        <div class="state-selection-container">
+            <h2>Selecione seu Estado</h2>
+            <select id="state-select" name="state">
+                <option value="" disabled selected>Escolha um Estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+            <button onclick="confirmState()">CONFIRMAR E ENTRAR</button>
+            
+            <span id="error-message"></span>
+        </div>
+
+    </div>
+
+    <script>
+        function confirmState() {
+            const selectElement = document.getElementById('state-select');
+            const errorMessageElement = document.getElementById('error-message');
+            const selectedState = selectElement.value;
+            
+            if (selectedState) {
+                // Se o estado for selecionado, limpa a mensagem de erro e redireciona
+                errorMessageElement.textContent = '';
+                window.location.href = 'inicio.html?state=' + selectedState;
+            } else {
+                // Se o estado NÃO for selecionado, exibe a mensagem de erro no span
+                errorMessageElement.textContent = '*Selecione o estado primeiro';
+            }
+        }
+    </script>
+    <script src="tooplate-2144-parallax-scripts.js"></script>
+</body>
+</html>
