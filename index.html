@@ -66,22 +66,79 @@
             background-color: #d800c6;
         }
 
-        /* NOVO ESTILO PARA A MENSAGEM DE ERRO */
+        /* MENSAGEM DE ERRO */
         #error-message {
-            color: #ff3333; /* Vermelho forte para erro */
+            color: #ff3333; 
             font-family: 'Space Grotesk', sans-serif;
             font-size: 14px;
-            min-height: 20px; /* Para evitar que os elementos "pulem" */
-            margin-top: -10px; /* Ajusta a posição para ficar logo abaixo do botão */
+            min-height: 20px;
         }
+
+        /* =============================== */
+        /* TELA DE BOAS-VINDAS            */
+        /* =============================== */
+        #welcome-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 999999;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #welcome-screen.mostrar {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #welcome-screen h1 {
+            color: #00ffcc;
+            font-size: 32px;
+            text-shadow: 0 0 15px #00ffcc;
+            text-align: center;  /* <-- CENTRALIZA NO CELULAR */
+            width: 100%;         /* <-- garante centralização */
+        }
+
+
+        .welcome-part {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-part.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+    #welcome-screen h1 {
+        font-size: 24px;       /* um pouco menor para caber */
+        line-height: 1.3;
+        text-align: center;
+    }
+}
+
     </style>
     
     <link href="tooplate-parallax-depth.css" rel="stylesheet">
-
 </head>
 <body>
-    <div class="mouse-follower" id="mouseFollower"></div>
+    <!-- Tela de boas-vindas -->
+    <div id="welcome-screen">
+        <h1>
+            <span class="welcome-part" id="bemvindo">Investir em Marketing </span>
+            <span> </span>
+            <span class="welcome-part" id="marketing"> é investir em Vendas.</span>
+        </h1>
+    </div>
 
+    <div class="mouse-follower" id="mouseFollower"></div>
     <div class="stars" id="stars"></div>
 
     <div class="hero-container" id="hero">
@@ -183,16 +240,42 @@
             const errorMessageElement = document.getElementById('error-message');
             const selectedState = selectElement.value;
             
-            if (selectedState) {
-                // Se o estado for selecionado, limpa a mensagem de erro e redireciona
-                errorMessageElement.textContent = '';
-                window.location.href = 'inicio.html?state=' + selectedState;
-            } else {
-                // Se o estado NÃO for selecionado, exibe a mensagem de erro no span
+            if (!selectedState) {
                 errorMessageElement.textContent = '*Selecione o estado primeiro';
+                return;
             }
+
+            errorMessageElement.textContent = '';
+
+            const welcome = document.getElementById('welcome-screen');
+            const bemvindo = document.getElementById('bemvindo');
+            const marketing = document.getElementById('marketing');
+
+            // zera estado visual
+            bemvindo.classList.remove('show');
+            marketing.classList.remove('show');
+
+            // mostra tela preta imediatamente
+            welcome.classList.add('mostrar');
+
+            // 👉 depois de 1.5s mostra "Bem-vindo"
+            setTimeout(() => {
+                bemvindo.classList.add('show');
+            }, 1500);
+
+            // 👉 depois de mais 2s mostra "ao Marketing Digital" (total 3.5s)
+            setTimeout(() => {
+                marketing.classList.add('show');
+            }, 3500);
+
+            // 👉 depois de mais 5s entra na página (total 8.5s)
+            setTimeout(() => {
+                window.location.href = 'inicio.html?state=' + selectedState;
+            }, 8500);
+
         }
     </script>
+
     <script src="tooplate-2144-parallax-scripts.js"></script>
 </body>
 </html>
