@@ -2545,3 +2545,158 @@ html {
         font-size: 1.1rem;
     }
 }
+
+
+
+/* SECTION */
+.values-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+/* CONTAINER */
+.values-container {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    position: relative;
+}
+
+/* ESQUERDA */
+.values-left {
+    position: relative;
+    width: 55%;
+    padding: 40px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.values-tag {
+    color: #e46fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.values-title {
+    margin: 15px 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.values-text {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.values-btn {
+    background: linear-gradient(135deg, #ff40c1, #7c2bff);
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+}
+
+/* IMAGEM DE FUNDO */
+.values-bg {
+    position: absolute;
+    inset: 0;
+    background: url("images/6.png") center/cover no-repeat;
+    filter: brightness(0.5) blur(1px);
+    z-index: -1;
+}
+
+/* DIREITA */
+.values-right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.values-card {
+    background: linear-gradient(135deg, rgba(255, 0, 140, 0.3), rgba(140, 0, 255, 0.3));
+    padding: 30px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-tag {
+    color: #e46fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card-text {
+    margin-top: 10px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* CÍRCULO DECORATIVO */
+.card-circle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 50%;
+    bottom: -30px;
+    right: -30px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .values-container {
+        flex-direction: column;
+    }
+
+    .values-left,
+    .values-right {
+        width: 100%;
+    }
+}
+
+
+
+
+.section-separator {
+  text-align: center;
+  margin: 100px 0;
+}
+
+.apolo-badge {
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(#050308, #050308) padding-box,
+    linear-gradient(90deg, #b000ff, #ff00ff) border-box;
+
+  /* --- Animação --- */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: aparecer 0.6s ease-out forwards;
+  animation-delay: s; /* demora 1 segundo para iniciar */
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

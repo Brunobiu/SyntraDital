@@ -191,46 +191,104 @@
                         </linearGradient>
                     </defs>
                 </svg>
-                <span class="logo-text"></span>
+                <span class="logo-text">Synkra Digital</span>
             </a>
         </div>
 
         <div class="state-selection-container">
-            <h2>Selecione seu Estado</h2>
-            <select id="state-select" name="state">
-                <option value="" disabled selected>Escolha um Estado</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-            </select>
-            <button onclick="confirmState()">CONFIRMAR E ENTRAR</button>
-            
-            <span id="error-message"></span>
-        </div>
+    <h2>Selecione seu Estado</h2>
+
+    <!-- SELECT ESTADO -->
+    <select id="state-select" name="state" onchange="loadCities()">
+        <option value="" disabled selected>Escolha um Estado</option>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+    </select>
+
+    <!-- SELECT CIDADE APARECE DEPOIS -->
+    <select id="city-select" name="city" style="margin-top:15px; display:none;">
+        <option value="" disabled selected>Escolha sua Cidade</option>
+    </select>
+
+    <button onclick="confirmState()">CONFIRMAR E ENTRAR</button>
+    
+    <span id="error-message"></span>
+</div>
+
+
+<script>
+    function loadCities() {
+        const uf = document.getElementById("state-select").value;
+        const citySelect = document.getElementById("city-select");
+
+        citySelect.style.display = "none"; 
+        citySelect.innerHTML = `<option value="" disabled selected>Carregando...</option>`;
+
+        fetch(`https://brasilapi.com.br/api/ibge/municipios/v1/${uf}`)
+            .then(response => response.json())
+            .then(cities => {
+                citySelect.innerHTML = `<option value="" disabled selected>Escolha sua Cidade</option>`;
+                
+                cities.forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city.nome;
+                    option.textContent = city.nome;
+                    citySelect.appendChild(option);
+                });
+
+                citySelect.style.display = "block";
+            })
+            .catch(() => {
+                citySelect.innerHTML = `<option value="">Erro ao carregar cidades</option>`;
+                citySelect.style.display = "block";
+            });
+    }
+
+    function confirmState() {
+        const uf = document.getElementById("state-select").value;
+        const city = document.getElementById("city-select").value;
+        const error = document.getElementById("error-message");
+
+        if (!uf) {
+            error.textContent = "Selecione um estado.";
+            return;
+        }
+
+        if (!city) {
+            error.textContent = "Selecione uma cidade.";
+            return;
+        }
+
+        error.textContent = "";
+        alert(`Estado: ${uf} | Cidade: ${city}`);
+    }
+</script>
+
 
     </div>
 
